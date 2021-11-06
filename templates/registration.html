@@ -1,0 +1,10 @@
+{% extends 'base_shop.html' %}
+{% block title %} {% endblock %}
+{% block content %}
+    <form method="post">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ client_form.as_p }}
+    <button type="submit">Register</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends 'base_shop.html' %}
+{% block content %}
+    {% for cart_item in cart_items %}
+        <p>{{ cart_item.quantity }} X {{ cart_item.product.name }} </p>
+    {% endfor %}
+{% endblock %}
