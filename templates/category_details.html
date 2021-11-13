@@ -1,0 +1,22 @@
+{% extends 'base_shop.html' %}
+{% block content %}
+    <h3>{{ category.name }} </h3>
+    {% for product in products %}
+        <div class="card" style="width: 18rem;">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }} ">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.price }} lei</p>
+                <form method="post" action="{% url 'add_product_to_cart' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <button class="btn btn-primary" type="submit">Add to cart</button>
+                     <a class="btn btn-success" href="{% url 'product_details' product.id %}">View</a>
+
+                </form>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
